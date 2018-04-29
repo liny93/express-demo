@@ -13,15 +13,6 @@ app.use(cors({
     credentials: true, // enable set cookie
 }));
 
-// 跨域问题
-// app.all('/', (req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-//     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-// });
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -31,8 +22,8 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-app.use(require('./routes'));
-
+var Router = require('./routers');
+Router(app);
 // catch 404
 app.use((req, res) => {
     resJson(res, 404, '');

@@ -1,13 +1,13 @@
 /**
  * Module dependencies.
  */
-
+require('dotenv').config()
 var app = require('./app')
 var http = require('http')
 var fs = require('fs')
 
 // 当前进程抛出一个没有被捕捉的异常时，会触发uncaughtException事件
-process.on("uncaughtException", (err) => fs.appendFileSync('./logs/error.log', `${new Date().toLocaleString()} --- ${err} --- ${__filename}\n`, 'utf8'));
+process.on("uncaughtException", (err) => fs.appendFileSync('./logs/uncaughtException.log', `${new Date().toLocaleString()} --- ${err} --- ${__filename}\n`, 'utf8'));
 
 /**
  * Get port from environment and store in Express.

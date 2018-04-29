@@ -1,12 +1,11 @@
-const { db, models } = require('../models')
-const resJson = require('../util/resJson')
+
+const { TestService } = require('../service')
+const { resJson } = require('../util')
 
 module.exports.getUserInfo = async (req, res) => {
-
-    let num = req.query.num
-    let user = await models.user.findById(num)
+    const id = req.params.id
+    const user = await TestService.getInstance().getUserInfo(+id)
 
     if (user) return resJson(res, user)
-    else return resJson(res, 400, 'Invalid param')
-
+    else return resJson(res, 400, 'not exist')
 }
