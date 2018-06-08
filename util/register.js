@@ -2,7 +2,7 @@ const resJson = require('./resJson')
 const fs = require('fs')
 const path = require('path')
 
-let register = async (router, method, args, userMiddleware, check) => {
+let register = async (router, method, args, userMiddleware, ...middleware) => {
     let wrap = async (req, res, next) => {
         try {
             await userMiddleware(req, res, next)
@@ -13,8 +13,7 @@ let register = async (router, method, args, userMiddleware, check) => {
             return resJson(res, 400, 'Invalid param')
         }
     }
-
-    router[method](args, wrap)
+    router[method](args, ...middleware, wrap)
 }
 
 function addLog(req, error) {
