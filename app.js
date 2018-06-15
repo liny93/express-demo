@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const session = require('express-session');
 const resJson = require('./util/resJson');
+const path = require('path')
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors({
     credentials: true, // enable set cookie
 }));
 
+app.use(express.static(path.resolve(__dirname, './public')))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
