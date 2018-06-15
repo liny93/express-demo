@@ -1,5 +1,6 @@
 const moment = require('moment')
 
+// 时间格式化
 module.exports = (time, timezone) => {
     if (time == 'now' && timezone) {
         return moment().add(timezone, 'h').format('YYYY-MM-DD HH:mm:ss')

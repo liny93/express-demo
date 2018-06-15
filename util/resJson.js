@@ -1,5 +1,5 @@
 /**
- * @author wwl
+ * @author liny
  * @version 0.1
  * @param {res} response响应对象
  * @param {status} 状态码
@@ -48,7 +48,6 @@ function resJson(res, status, data, message) {
   if (res && res.json) {
     res.json(jsonObj);
   } else {
-    // console.log('res参数有误!');
     return jsonObj;
   }
 }

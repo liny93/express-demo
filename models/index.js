@@ -9,8 +9,8 @@ const models = {};
 for (let key in dbconn) {
     const databaseObj = dbconn[key];
     const dbName = 'sequelize_' + key;
-    const d = new Date().getTimezoneOffset() * -1 / 60;
-    databaseObj.timezone = d >= 0 ? '+' + d + ':00' : d + ':00';
+    // const d = new Date().getTimezoneOffset() * -1 / 60;
+    // databaseObj.timezone = d >= 0 ? '+' + d + ':00' : d + ':00';
     db[dbName] = new Sequelize(
         databaseObj.database,
         databaseObj.username,

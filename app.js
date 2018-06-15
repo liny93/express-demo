@@ -8,25 +8,33 @@ const path = require('path')
 
 const app = express();
 
+// 跨域处理
 app.use(cors({
     origin: true,
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
-    credentials: true, // enable set cookie
+    credentials: true,
 }));
 
+// 静态文件处理
 app.use(express.static(path.resolve(__dirname, './public')))
+
+// body解析
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// 开启session
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
 }));
 
+// 路由注册
 var Router = require('./routers');
 Router(app);
-// catch 404
+
+// 无效路由处理
 app.use((req, res) => {
     resJson(res, 404, '');
 });

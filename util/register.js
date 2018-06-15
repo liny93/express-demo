@@ -2,6 +2,7 @@ const resJson = require('./resJson')
 const fs = require('fs')
 const path = require('path')
 
+//  路由注册，统一进行try  catch
 let register = async (router, method, args, userMiddleware, ...middleware) => {
     let wrap = async (req, res, next) => {
         try {
@@ -16,6 +17,7 @@ let register = async (router, method, args, userMiddleware, ...middleware) => {
     router[method](args, ...middleware, wrap)
 }
 
+// 错误记录，低配日志
 function addLog(req, error) {
     const url = req.originalUrl || req.url
     const errMsg = error.stack
