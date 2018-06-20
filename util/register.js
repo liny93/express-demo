@@ -10,7 +10,6 @@ let register = async (router, method, args, userMiddleware, ...middleware) => {
         } catch (e) {
             addLog(req, e)
             console.log(e)
-            if (e instanceof ParamError) return resJson(res, 400, e.message)
             return resJson(res, 400, 'Invalid param')
         }
     }
@@ -28,13 +27,6 @@ function addLog(req, error) {
     `
     if (req.method !== 'GET') errFileMsg += `BODY: ${JSON.stringify(req.body)}`
     fs.appendFileSync(path.resolve(__dirname, '../logs/error.log'), errFileMsg + '\n\n', 'utf8')
-}
-
-class ParamError extends Error {
-    constructor(msg, code = 400) {
-        super(msg);
-        this.code = code;
-    }
 }
 
 module.exports = register
