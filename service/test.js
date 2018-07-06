@@ -14,4 +14,4 @@ class TestService {
     }
 }
 
-module.exports = TestService
+module.exports = TestService.getInstance()
