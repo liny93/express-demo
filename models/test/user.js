@@ -5,18 +5,28 @@ module.exports = function (sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER(4),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
-    name: {
-      type: DataTypes.STRING(30),
+    username: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      unique: true
+    },
+    password: {
+      type: DataTypes.STRING(255),
       allowNull: true
     },
-    sex: {
-      type: DataTypes.STRING(10),
+    role: {
+      type: DataTypes.STRING(20),
       allowNull: true
     },
-    score: {
-      type: "DOUBLE(4,0)",
+    input_date: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    last_login: {
+      type: DataTypes.DATE,
       allowNull: true
     }
   }, {

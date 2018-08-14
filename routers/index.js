@@ -1,3 +1,3 @@
 module.exports = function (app) {
-    app.use('/test', require('./test'))
+    app.use('/user', require('./user'))
 }

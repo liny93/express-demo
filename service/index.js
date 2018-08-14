@@ -1,1 +1,1 @@
-exports.TestService = require('./test')
+exports.UserService = require('./user')
