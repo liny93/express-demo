@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 //  路由注册，统一进行try  catch
-let register = async (router, method, args, userMiddleware, ...middleware) => {
+let register = (router, method, args, userMiddleware, ...middleware) => {
     let wrap = async (req, res, next) => {
         try {
             await userMiddleware(req, res, next)
@@ -23,7 +23,9 @@ function addLog(req, error) {
     let errFileMsg = `
     TIME: ${new Date().toLocaleString()}
     URL: ${url}
-    MSG: ${errMsg}
+    MSG: ${errMsg.split('\n')[0]}
+    ${errMsg.split('\n')[1]}
+
     `
     if (req.method !== 'GET') errFileMsg += `BODY: ${JSON.stringify(req.body)}`
     fs.appendFileSync(path.resolve(__dirname, '../logs/error.log'), errFileMsg + '\n\n', 'utf8')

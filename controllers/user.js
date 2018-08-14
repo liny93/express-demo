@@ -1,4 +1,3 @@
-
 const { UserService } = require('../service')
 const { resJson } = require('../util')
 
@@ -37,7 +36,7 @@ exports.updatePassword = async (req, res) => {
     return resJson(res, ...result)
 }
 
-
+// 修改其他用户信息
 exports.updateUserInfo = async (req, res) => {
     const user = req.body
     const result = await UserService.updateUserInfo(user)
