@@ -91,7 +91,7 @@ const CheckFun = {
         return !Object.values(check).includes(false)
     },
     isBoolean(obj) {
-        return ['true', 'false', '1', '0'].includes(obj.toString())
+        return obj.toString() === 'true' || obj.toString() === 'false'
     },
     isNull(obj) {
         return checkType(obj, 'Null')
@@ -107,13 +107,13 @@ const CheckFun = {
         return !isNaN(date)
     },
     isInt(obj, options) {
-        const int = /^(?:[-+]?(?:0|[1-9][0-9]*))$/
+        const regex = /^(?:[-+]?(?:0|[1-9][0-9]*))$/
         if (!options) return regex.test(obj)
 
-        let minCheckPassed = (!options.hasOwnProperty('min') || str >= options.min)
-        let maxCheckPassed = (!options.hasOwnProperty('max') || str <= options.max)
-        let ltCheckPassed = (!options.hasOwnProperty('lt') || str < options.lt)
-        let gtCheckPassed = (!options.hasOwnProperty('gt') || str > options.gt)
+        let minCheckPassed = (!options.hasOwnProperty('min') || obj >= options.min)
+        let maxCheckPassed = (!options.hasOwnProperty('max') || obj <= options.max)
+        let ltCheckPassed = (!options.hasOwnProperty('lt') || obj < options.lt)
+        let gtCheckPassed = (!options.hasOwnProperty('gt') || obj > options.gt)
 
         return regex.test(obj) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed
     },
@@ -128,54 +128,11 @@ const CheckFun = {
     },
     isIP(str, version = '') {
         const ipv4Maybe = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/
-        const ipv6Block = /^[0-9A-F]{1,4}$/i
-        version = String(version);
-        if (!version) {
-            return isIP(str, 4) || isIP(str, 6);
-        } else if (version === '4') {
-            if (!ipv4Maybe.test(str)) {
-                return false;
-            }
-            const parts = str.split('.').sort((a, b) => a - b);
-            return parts[3] <= 255;
-        } else if (version === '6') {
-            const blocks = str.split(':');
-            let foundOmissionBlock = false;
-            const foundIPv4TransitionBlock = isIP(blocks[blocks.length - 1], 4);
-            const expectedNumberOfBlocks = foundIPv4TransitionBlock ? 7 : 8;
-
-            if (blocks.length > expectedNumberOfBlocks) {
-                return false;
-            }
-            if (str === '::') {
-                return true;
-            } else if (str.substr(0, 2) === '::') {
-                blocks.shift();
-                blocks.shift();
-                foundOmissionBlock = true;
-            } else if (str.substr(str.length - 2) === '::') {
-                blocks.pop();
-                blocks.pop();
-                foundOmissionBlock = true;
-            }
-
-            for (let i = 0; i < blocks.length; ++i) {
-                if (blocks[i] === '' && i > 0 && i < blocks.length - 1) {
-                    if (foundOmissionBlock) {
-                        return false;
-                    }
-                    foundOmissionBlock = true;
-                } else if (foundIPv4TransitionBlock && i === blocks.length - 1) {
-                } else if (!ipv6Block.test(blocks[i])) {
-                    return false;
-                }
-            }
-            if (foundOmissionBlock) {
-                return blocks.length >= 1;
-            }
-            return blocks.length === expectedNumberOfBlocks;
+        if (!ipv4Maybe.test(str)) {
+            return false;
         }
-        return false;
+        const parts = str.split('.').sort((a, b) => a - b);
+        return parts[3] <= 255;
     }
 }
 

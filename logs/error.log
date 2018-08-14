@@ -1,0 +1,28 @@
+
+    TIME: 2018-8-14 14:37:21
+    URL: /user/info
+    MSG: SyntaxError: Identifier 'user' has already been declared
+    at exports.updateUserInfo (c:\Users\林勇\Desktop\farmwork\express-demo\controllers\user.js:43:38)
+    at wrap (c:\Users\林勇\Desktop\farmwork\express-demo\util\register.js:9:19)
+    at Layer.handle [as handle_request] (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\layer.js:95:5)
+    at next (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\route.js:137:13)
+    at c:\Users\林勇\Desktop\farmwork\express-demo\util\checkparam.js:17:13
+    at Layer.handle [as handle_request] (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\layer.js:95:5)
+    at next (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\route.js:137:13)
+    at c:\Users\林勇\Desktop\farmwork\express-demo\util\checkpermission.js:31:13
+    at Layer.handle [as handle_request] (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\layer.js:95:5)
+    at next (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\layer.js:95:5)
+    at C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:281:22
+    at Function.process_params (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:335:12)
+    at next (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:174:3)
+    at router (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:317:13)
+    at C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:335:12)
+    at next (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_express@4.16.3@express\lib\router\index.js:275:10)
+    BODY: {"id":"2","role":"admin"}
+

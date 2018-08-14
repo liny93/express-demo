@@ -36,3 +36,10 @@ exports.updatePassword = async (req, res) => {
     const result = await UserService.updatePassword(id, oldPwd, newPwd)
     return resJson(res, ...result)
 }
+
+
+exports.updateUserInfo = async (req, res) => {
+    const user = req.body
+    const result = await UserService.updateUserInfo(user)
+    return resJson(res, ...result)
+}

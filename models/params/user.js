@@ -29,8 +29,16 @@ const updatePasswordParam = [
     ['newPwd', true, 'isString', { lenminh: { min: 6, max: 10 } }]
 ]
 
+const updateUserInfo = [
+    ['id', true, 'isInt'],
+    ['username', false, 'isString', { lenminh: { min: 6, max: 10 } }],
+    ['password', false, 'isString', { lenminh: { min: 6, max: 10 } }],
+    ['role', false, 'isIn', ['admin', 'user']]
+]
+
 module.exports = {
     loginParam,
     registerParam,
-    updatePasswordParam
+    updatePasswordParam,
+    updateUserInfo
 }

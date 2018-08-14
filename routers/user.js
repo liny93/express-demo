@@ -16,6 +16,9 @@ register(router, 'get', '/info', user.getUserInfo, isLogin)
 // 修改密码，登录后可以修改
 register(router, 'post', '/upwd', user.updatePassword, isLogin, checkParam('user', 'updatePasswordParam'))
 
+// 修改其他用户信息，仅管理员可用
+register(router, 'post', '/info', user.updateUserInfo, checkPermission('admin'), checkParam('user', 'updateUserInfo'))
+
 // 获取角色列表，仅管理员可以
 register(router, 'get', '/list', user.getUserList, checkPermission('admin'))
 

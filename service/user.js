@@ -53,6 +53,25 @@ class UserService {
         return ['success']
     }
 
+    async updateUserInfo(user) {
+        const userinfo = await models.user.findById(user.id)
+        if (!userinfo) return [400, "this user is not exists"]
+
+        if (user.username) {
+            const checkUser = await models.user.findOne({ where: { username: user.username } })
+            if (checkUser && checkUser.id !== user.id) return [400, "this user name already exists"]
+        }
+
+        const updateUser = { id: user.id }
+
+        if (user.username) updateUser.username = user.username
+        if (user.password) updateUser.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8))
+        if (user.role) updateUser.role = user.role
+
+        await models.user.update(updateUser, { where: { id: user.id }, fields: Object.keys(updateUser) })
+        return ['success']
+    }
+
     // 获取用户信息
     async getUserInfo(id) {
         const user = await models.user.findById(id)
