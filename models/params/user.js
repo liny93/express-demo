@@ -14,25 +14,25 @@ const loginParam = {
     params: [],
     query: [],
     body: [
-        ['username', true, 'isString', { lenminh: { min: 6, max: 10 } }],
-        ['password', true, 'isString', { lenminh: { min: 6, max: 10 } }]
+        ['username', true, 'isString', { length: { min: 6, max: 10 } }],
+        ['password', true, 'isString', { length: { min: 6, max: 10 } }]
     ]
 }
 
 const registerParam = [
-    ['username', true, 'isString', { lenminh: { min: 6, max: 10 } }],
-    ['password', true, 'isString', { lenminh: { min: 6, max: 10 } }]
+    ['username', true, 'isString', { length: { min: 6, max: 10 } }],
+    ['password', true, 'isString', { length: { min: 6, max: 10 } }]
 ]
 
 const updatePasswordParam = [
-    ['oldPwd', true, 'isString', { lenminh: { min: 6, max: 10 } }],
-    ['newPwd', true, 'isString', { lenminh: { min: 6, max: 10 } }]
+    ['oldPwd', true, 'isString', { length: { min: 6, max: 10 } }],
+    ['newPwd', true, 'isString', { length: { min: 6, max: 10 } }]
 ]
 
 const updateUserInfo = [
     ['id', true, 'isInt'],
-    ['username', false, 'isString', { lenminh: { min: 6, max: 10 } }],
-    ['password', false, 'isString', { lenminh: { min: 6, max: 10 } }],
+    ['username', false, 'isString', { length: { min: 6, max: 10 } }],
+    ['password', false, 'isString', { length: { min: 6, max: 10 } }],
     ['role', false, 'isIn', ['admin', 'user']]
 ]
 
