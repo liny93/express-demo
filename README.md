@@ -1,7 +1,7 @@
 
 # 基于express，mysql，sequelize的后台服务器demo
 
-使用.env文件为项目配置
+使用.env文件为项目配置，使用时，复制.env.dev文件，重命名为.env
 
 ### 利用sequelize-auto生成表对应的js文件，命令行执行代码：
 
