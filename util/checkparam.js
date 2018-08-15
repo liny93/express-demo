@@ -10,16 +10,19 @@ const modelPath = '../models/params/' // 参数模型所在文件夹
  */
 module.exports = (modelGroup, modelName) => {
     const model = require(path.resolve(__dirname, modelPath + modelGroup))[modelName]
+    if (!checkArray(model)) throw Error(`please check your param model about ${modelGroup} - ${modelName}`)
     return (req, res, next) => {
         if (Array.isArray(model)) {
             const check = checkModel(req.body, model)
-            if (check) return resJson(res, 400, check)
+            if (typeof check === 'string') return resJson(res, 400, check)
+            req.body = check
             next()
         } else {
             for (let val of ['params', 'query', 'body']) {
                 if (Array.isArray(model[val])) {
                     const check = checkModel(req[val], model[val])
-                    if (check) return resJson(res, 400, check)
+                    if (typeof check === 'string') return resJson(res, 400, check)
+                    req[val] = check
                 }
             }
             next()
@@ -27,22 +30,40 @@ module.exports = (modelGroup, modelName) => {
     }
 }
 
+/**
+ * 做参数检查，根据定义的模板，对参数进行校检，转换
+ * @param {前端传入参数} obj 
+ * @param {定义参数模板} model 
+ */
 function checkModel(obj, model) {
+    const newParam = {}
     for (let val of model) {
-        if (!checkArray(val)) continue
-        const key = val[0]
-        if (val[1] && obj[key] == null) {
-            return `the ${key} cannot be null`
+        if (obj[val.frontName] == null) {
+            if (val.noEmpty) return `the ${val.frontName} cannot be null`
+            continue
         }
-        if (obj[key] != null && CheckFun[val[2]] && !CheckFun[val[2]](obj[key], val[3])) {
-            return `the value of ${key} is invalid`
-        }
+        if (!CheckFun[val.fun](obj[val.frontName], val.options)) return `the value of ${val.frontName} is invalid`
+        newParam[val.backName] = obj[val.frontName]
     }
-    return false
+    return newParam
 }
 
+/**
+ * 程序启动时检查参数模板是否符合标准
+ * @param {定义参数模板} model 
+ */
 function checkArray(model) {
-    return CheckFun.isString(model[0]) && CheckFun.isBoolean(model[1]) && CheckFun.isString(model[2])
+    if (!Array.isArray(model)) {
+        model = [...model.params || [], ...model.query || [], ...model.body || []]
+    }
+    for (let val of model) {
+        const frontNameCheck = val.hasOwnProperty('frontName') && CheckFun.isString(val.frontName)
+        const backNameCheck = val.hasOwnProperty('backName') && CheckFun.isString(val.backName)
+        const noEmptyCheck = val.hasOwnProperty('noEmpty') && CheckFun.isBoolean(val.noEmpty)
+        const funCheck = val.hasOwnProperty('fun') && CheckFun.hasOwnProperty(val.fun)
+        if (!frontNameCheck || !backNameCheck || !noEmptyCheck || !funCheck) return false
+    }
+    return true
 }
 
 // 校检函数
@@ -126,7 +147,7 @@ const CheckFun = {
             return false
         }
     },
-    isIP(str, version = '') {
+    isIP(str) {
         const ipv4Maybe = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/
         if (!ipv4Maybe.test(str)) {
             return false;

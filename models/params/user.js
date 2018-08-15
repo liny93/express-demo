@@ -3,37 +3,99 @@
  * 1) keys: params,query,body对应req
  * 2) 默认 req.body
  * 
- * 数组接收四个值：
- * 1 参数名（必填）
- * 2 非空检查 （必填）
- * 3 检查函数 （必填）
- * 4 函数配置 （选填）
+ *  : 转换前端发送的参数，这样在后端统一调用，如果前端参数名称变换，只需在此配置中修改即可，不影响后续程序的使用
+ * 
+ * model:
+ * {
+ *      frontName: "string" 前端发过来的参数名称                 必须有
+ *      backName: "string"  将前端发过来的参数转换成指定名称      必须有
+ *      noEmpty: boolean 非空判断                               必须有
+ *      fun: "string" 校检函数                                  必须有，且在预设的函数范围内
+ *      options?: object 校检函数参数
+ * }
  */
 
 const loginParam = {
-    params: [],
-    query: [],
     body: [
-        ['username', true, 'isString', { length: { min: 6, max: 10 } }],
-        ['password', true, 'isString', { length: { min: 6, max: 10 } }]
+        {
+            frontName: "username",
+            backName: "username",
+            noEmpty: true,
+            fun: "isString",
+            options: { length: { min: 3, max: 10 } }
+        },
+        {
+            frontName: "password",
+            backName: "password",
+            noEmpty: true,
+            fun: "isString",
+            options: { length: { min: 3, max: 10 } }
+        }
     ]
 }
 
 const registerParam = [
-    ['username', true, 'isString', { length: { min: 6, max: 10 } }],
-    ['password', true, 'isString', { length: { min: 6, max: 10 } }]
+    {
+        frontName: "username",
+        backName: "username",
+        noEmpty: true,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    },
+    {
+        frontName: "password",
+        backName: "password",
+        noEmpty: true,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    }
 ]
 
 const updatePasswordParam = [
-    ['oldPwd', true, 'isString', { length: { min: 6, max: 10 } }],
-    ['newPwd', true, 'isString', { length: { min: 6, max: 10 } }]
+    {
+        frontName: "oldPwd",
+        backName: "oldPwd",
+        noEmpty: true,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    },
+    {
+        frontName: "newPwd",
+        backName: "newPwd",
+        noEmpty: true,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    }
 ]
 
 const updateUserInfo = [
-    ['id', true, 'isInt'],
-    ['username', false, 'isString', { length: { min: 6, max: 10 } }],
-    ['password', false, 'isString', { length: { min: 6, max: 10 } }],
-    ['role', false, 'isIn', ['admin', 'user']]
+    {
+        frontName: "id",
+        backName: "id",
+        noEmpty: true,
+        fun: "isInt",
+    },
+    {
+        frontName: "username",
+        backName: "username",
+        noEmpty: false,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    },
+    {
+        frontName: "password",
+        backName: "password",
+        noEmpty: false,
+        fun: "isString",
+        options: { length: { min: 3, max: 10 } }
+    },
+    {
+        frontName: "role",
+        backName: "role",
+        noEmpty: true,
+        fun: "isIn",
+        options: ['admin', 'user']
+    }
 ]
 
 module.exports = {

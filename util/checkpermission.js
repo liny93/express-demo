@@ -17,7 +17,11 @@ exports.isLogin = (req, res, next) => {
     }
 }
 
-// 权限检查
+/**
+ * 权限检查
+ * 从jwt中取出当前访问用户的role，然后与该router所需role进行比较
+ * @param {当前router所需角色} role 
+ */
 exports.checkPermission = (role) => {
     return (req, res, next) => {
         const token = req.headers['authorization']

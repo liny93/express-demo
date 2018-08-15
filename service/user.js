@@ -53,9 +53,10 @@ class UserService {
         return ['success']
     }
 
+    // 修改用户信息
     async updateUserInfo(user) {
         const userinfo = await models.user.findById(user.id)
-        if (!userinfo) return [400, "this user is not exists"]
+        if (!userinfo) return [400, "this user is not exists"]  // 检查
 
         if (user.username) {
             const checkUser = await models.user.findOne({ where: { username: user.username } })
