@@ -43,7 +43,16 @@ function checkModel(obj, model) {
             continue
         }
         if (!CheckFun[val.fun](obj[val.frontName], val.options)) return `the value of ${val.frontName} is invalid`
-        newParam[val.backName] = obj[val.frontName]
+        if (val.deepModel) {
+            if (val.fun === 'isObject') {
+                newParam[val.backName] = checkModel(obj[val.frontName], val.deepModel)
+            }
+            if (val.fun === 'isArray') {
+                newParam[val.backName] = obj[val.frontName].map(v => checkModel(v, val.deepModel))
+            }
+        } else {
+            newParam[val.backName] = obj[val.frontName]
+        }
     }
     return newParam
 }
@@ -61,7 +70,8 @@ function checkArray(model) {
         const backNameCheck = val.hasOwnProperty('backName') && CheckFun.isString(val.backName)
         const noEmptyCheck = val.hasOwnProperty('noEmpty') && CheckFun.isBoolean(val.noEmpty)
         const funCheck = val.hasOwnProperty('fun') && CheckFun.hasOwnProperty(val.fun)
-        if (!frontNameCheck || !backNameCheck || !noEmptyCheck || !funCheck) return false
+        const deepCheck = val.hasOwnProperty('deepModel') ? ['isObject', 'isArray'].includes(val.fun) : true
+        if (!frontNameCheck || !backNameCheck || !noEmptyCheck || !funCheck || !deepCheck) return false
     }
     return true
 }
