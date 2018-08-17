@@ -1,1 +1,218 @@
 
+
+    TIME: 2018-8-17 10:20:11
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:23:43
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:23:59
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:24:43
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:24:54
+    URL: /user/reg
+    MSG: SequelizeValidationError: notNull Violation: user.username cannot be null
+        at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 10:25:08
+    URL: /user/reg
+    MSG: SequelizeValidationError: notNull Violation: user.username cannot be null
+        at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 10:25:18
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:41:54
+    URL: /user/reg
+    MSG: Error: Illegal arguments: undefined, string
+        at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {}
+
+
+    TIME: 2018-8-17 10:42:02
+    URL: /user/reg
+    MSG: SequelizeValidationError: notNull Violation: user.username cannot be null
+        at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 10:52:20
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 非法参数
+    ERROR-MSG: undefined, string
+    
+    BODY: {}
+
+    
+    TIME: 2018-8-17 10:57:11
+    URL: /user/reg
+    ERROR-LEVEL: sequelize
+    ERROR-TIP: 数据库非空字段没有数据
+    ERROR-MSG: user.username cannot be null
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 10:57:47
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: undefined
+    ERROR-MSG:undefined
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 10:59:12
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: undefined
+    ERROR-MSG:undefined
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 11:00:46
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 变量使用不正确
+    ERROR-MSG: ddd is not iterable
+
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 11:01:58
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 变量使用不正确
+    ERROR-MSG: ddd is not iterable
+    ERROR-AT:     at UserService.register (c:\Users\林勇\Desktop\farmwork\express-demo\service\user.js:57:25)
+    
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 11:02:29
+    URL: /user/reg
+    ERROR-LEVEL: sequelize
+    ERROR-TIP: undefined
+    ERROR-MSG:  user.username cannot be null
+    ERROR-AT:     at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+    
+    BODY: {"password":"123456"}
+
+
+    TIME: 2018-8-17 11:04:24
+    URL: /user/reg
+    ERROR-LEVEL: sequelize
+    ERROR-TIP: 数据库非空字段没有数据
+    ERROR-MSG:  user.username cannot be null
+    ERROR-AT:     at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"} 
+
+
+    TIME: 2018-8-17 11:04:56
+    URL: /user/reg
+    ERROR-LEVEL: sequelize
+    ERROR-TIP: 数据库非空字段没有数据
+    ERROR-MSG:  user.username cannot be null
+    ERROR-AT: at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"} 
+
+
+    TIME: 2018-8-17 11:05:25
+    URL: /user/reg
+    ERROR-LEVEL: sequelize
+    ERROR-TIP: 数据库非空字段没有数据
+    ERROR-MSG: user.username cannot be null
+    ERROR-AT: at Promise.all.then (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_sequelize@4.38.0@sequelize\lib\instance-validator.js:77:15)
+
+    BODY: {"password":"123456"} 
+
+
+    TIME: 2018-8-17 11:05:26
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 非法参数
+    ERROR-MSG: undefined, string
+    ERROR-AT: at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {} 
+
+
+    TIME: 2018-8-17 11:06:11
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 非法参数
+    ERROR-MSG: undefined, string
+    ERROR-AT: at Object.bcrypt.hashSync (C:\Users\林勇\Desktop\farmwork\express-demo\node_modules\_bcryptjs@2.4.3@bcryptjs\dist\bcrypt.js:189:19)
+
+    BODY: {} 
+
+
+    TIME: 2018-8-17 11:06:21
+    URL: /user/reg
+    ERROR-LEVEL: undefined
+    ERROR-TIP: undefined
+    ERROR-MSG: ddd is not defined
+    ERROR-AT: at UserService.register (c:\Users\林勇\Desktop\farmwork\express-demo\service\user.js:55:21)
+
+    BODY: {"password":"123456"} 
+
+
+    TIME: 2018-8-17 11:07:09
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 变量未定义
+    ERROR-MSG: ddd is not defined
+    ERROR-AT: at UserService.register (c:\Users\林勇\Desktop\farmwork\express-demo\service\user.js:55:21)
+
+    BODY: {"password":"123456"} 
+
+
+    TIME: 2018-8-17 11:08:10
+    URL: /user/reg
+    ERROR-LEVEL: system
+    ERROR-TIP: 变量使用不正确
+    ERROR-MSG: Cannot read property 'ddd' of undefined
+    ERROR-AT: at UserService.register (c:\Users\林勇\Desktop\farmwork\express-demo\service\user.js:56:30)
+
+    BODY: {"password":"123456"} 
+

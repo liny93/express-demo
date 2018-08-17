@@ -18,7 +18,12 @@ class UserService {
 
         if (!user || !bcrypt.compareSync(password, user.password)) return [400, 'invalid user']  // 无效用户
 
-        await models.user.update({ last_login: new Date() }, { where: { username: username }, fields: ['last_login'] }) // 修改登录时间
+        try {
+            await models.user.update({ last_login: new Date() }, { where: { username: username }, fields: ['last_login'] }) // 修改登录时间
+        } catch (e) {
+            logger.error("update user fail")
+            return [400, "update fail"]
+        }
 
         const token = jwt.sign({ id: user.id, role: user.role }, process.env.TOKEN_SECREKEY, { expiresIn: 60 * 10 }) // 生成jwt
 

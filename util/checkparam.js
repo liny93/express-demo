@@ -10,7 +10,7 @@ const modelPath = '../models/params/' // 参数模型所在文件夹
  */
 module.exports = (modelGroup, modelName) => {
     const model = require(path.resolve(__dirname, modelPath + modelGroup))[modelName]
-    if (!checkArray(model)) throw Error(`please check your param model about ${modelGroup} - ${modelName}`)
+    if (!checkArray(model)) throw Error(`please check your parameter model about ${modelGroup} - ${modelName}`)
     return (req, res, next) => {
         if (Array.isArray(model)) {
             const check = checkModel(req.body, model)
@@ -94,10 +94,10 @@ const CheckFun = {
 
         if (!options) return float.test(obj)
 
-        let minCheckPassed = (!options.hasOwnProperty('min') || obj >= options.min)
-        let maxCheckPassed = (!options.hasOwnProperty('max') || obj <= options.max)
-        let ltCheckPassed = (!options.hasOwnProperty('lt') || obj < options.lt)
-        let gtCheckPassed = (!options.hasOwnProperty('gt') || obj > options.gt)
+        let minCheckPassed = !options.hasOwnProperty('min') || obj >= options.min
+        let maxCheckPassed = !options.hasOwnProperty('max') || obj <= options.max
+        let ltCheckPassed = !options.hasOwnProperty('lt') || obj < options.lt
+        let gtCheckPassed = !options.hasOwnProperty('gt') || obj > options.gt
 
         return float.test(obj) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed
     },
@@ -111,10 +111,10 @@ const CheckFun = {
 
         if (options.hasOwnProperty('length')) {
             const len = options.length
-            check.minCheckPassed = (!len.hasOwnProperty('min') || str.length >= len.min)
-            check.maxCheckPassed = (!len.hasOwnProperty('max') || str.length <= len.max)
-            check.ltCheckPassed = (!len.hasOwnProperty('lt') || str.length < len.lt)
-            check.gtCheckPassed = (!len.hasOwnProperty('gt') || str.length > len.gt)
+            check.minCheckPassed = !len.hasOwnProperty('min') || str.length >= len.min
+            check.maxCheckPassed = !len.hasOwnProperty('max') || str.length <= len.max
+            check.ltCheckPassed = !len.hasOwnProperty('lt') || str.length < len.lt
+            check.gtCheckPassed = !len.hasOwnProperty('gt') || str.length > len.gt
         }
 
         check.subCheckPassed = (!options.hasOwnProperty('sub') || str.includes(options.sub))
@@ -141,10 +141,10 @@ const CheckFun = {
         const regex = /^(?:[-+]?(?:0|[1-9][0-9]*))$/
         if (!options) return regex.test(obj)
 
-        let minCheckPassed = (!options.hasOwnProperty('min') || obj >= options.min)
-        let maxCheckPassed = (!options.hasOwnProperty('max') || obj <= options.max)
-        let ltCheckPassed = (!options.hasOwnProperty('lt') || obj < options.lt)
-        let gtCheckPassed = (!options.hasOwnProperty('gt') || obj > options.gt)
+        let minCheckPassed = !options.hasOwnProperty('min') || obj >= options.min
+        let maxCheckPassed = !options.hasOwnProperty('max') || obj <= options.max
+        let ltCheckPassed = !options.hasOwnProperty('lt') || obj < options.lt
+        let gtCheckPassed = !options.hasOwnProperty('gt') || obj > options.gt
 
         return regex.test(obj) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed
     },

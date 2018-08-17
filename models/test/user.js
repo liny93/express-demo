@@ -10,24 +10,24 @@ module.exports = function (sequelize, DataTypes) {
     },
     username: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
       unique: true
     },
     password: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     role: {
       type: DataTypes.STRING(20),
-      allowNull: true
+      allowNull: false
     },
     input_date: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     },
     last_login: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     }
   }, {
       tableName: 'user'

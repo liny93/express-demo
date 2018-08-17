@@ -30,11 +30,11 @@ models一个文件夹代表一个数据库，名字与config文件设置名字�
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL,
-  `input_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `last_login` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `input_date` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `last_login` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uqusername` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
