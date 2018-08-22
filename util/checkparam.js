@@ -5,8 +5,8 @@ const modelPath = '../models/params/' // 参数模型所在文件夹
 
 /**
  * 参数校检
- * @param {参数模型所在文件} modelGroup 
- * @param {参数模型名称} modelName 
+ * @param {String} modelGroup 参数模型所在文件
+ * @param {String} modelName 参数模型名称
  */
 module.exports = (modelGroup, modelName) => {
     const model = require(path.resolve(__dirname, modelPath + modelGroup))[modelName]
@@ -32,8 +32,8 @@ module.exports = (modelGroup, modelName) => {
 
 /**
  * 做参数检查，根据定义的模板，对参数进行校检，转换
- * @param {前端传入参数} obj 
- * @param {定义参数模板} model 
+ * @param {Object} obj 前端传入参数
+ * @param {Array or Object} model 定义参数模板
  */
 function checkModel(obj, model) {
     const newParam = {}
@@ -59,7 +59,7 @@ function checkModel(obj, model) {
 
 /**
  * 程序启动时检查参数模板是否符合标准
- * @param {定义参数模板} model 
+ * @param {Object} model 定义参数模板
  */
 function checkArray(model) {
     if (!Array.isArray(model)) {

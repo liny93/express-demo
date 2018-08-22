@@ -1,11 +1,11 @@
 /**
  * @author liny
  * @version 0.1
- * @param {res} response响应对象
- * @param {status} 状态码
- * @param {data}  数据
- * @param {message} 文字描述
- * @return {obj} 返回json数据
+ * @param {Response} res response响应对象
+ * @param {Integer} status 状态码
+ * @param {Object}  data 数据
+ * @param {String} message 文字描述
+ * @return {Object} obj 返回json数据
  */
 function resJson(res, status, data, message) {
   const jsonObj = {};

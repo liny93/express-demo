@@ -1,7 +1,16 @@
 
 # 基于express，mysql，sequelize的后台服务器demo
 
-使用.env文件为项目配置，使用时，复制.env.dev文件，重命名为.env
+##使用方式
+
+```bash
+npm install 
+```
+复制.env.dev文件，重命名为.env，在.env中配置数据库信息
+在本地数据库中添加test数据库，执行下方的SQL生成user表
+```bash
+node server.js 
+```
 
 ### 利用sequelize-auto生成表对应的js文件，命令行执行代码：
 
@@ -43,3 +52,4 @@ INSERT INTO `user` VALUES ('1', 'liny', '$2a$08$J9LKa9xwBlHCYS5XJe9xpun39e9LZZNM
 INSERT INTO `user` VALUES ('2', 'testuser1', '$2a$08$J9LKa9xwBlHCYS5XJe9xpun39e9LZZNMVqRVDrpiIjtksx5OQssGK', 'user', '2018-01-01 00:00:00', '2018-01-01 00:10:00');
 INSERT INTO `user` VALUES ('3', 'testuser2', '$2a$08$J9LKa9xwBlHCYS5XJe9xpun39e9LZZNMVqRVDrpiIjtksx5OQssGK', 'user', '2018-01-01 00:00:00', '2018-01-01 00:10:00');
 ```
+

@@ -2,7 +2,7 @@
  * 根据dbconfig.js中的配置，自动连接数据库
  * 寻找与键值同名的文件夹，遍历文件，创建model
  * 
- * params文件夹为参数model，如有同名数据库，需人为修改
+ * 注：params文件夹为参数model，如有同名数据库，需人为修改
  */
 const fs = require('fs');
 const path = require('path');

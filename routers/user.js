@@ -1,3 +1,8 @@
+/**
+ * 路由注册
+ * 
+ * register(router,'请求方式'，'路径'，'业务逻辑函数（最后一个中间件）'，'...依次执行的中间件')
+ */
 const { user } = require('../controllers')
 let { register, isLogin, checkPermission, checkParam } = require('../util')
 
