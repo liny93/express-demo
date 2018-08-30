@@ -139,6 +139,7 @@ const CheckFun = {
     },
     isInt(obj, options) {
         const regex = /^(?:[-+]?(?:0|[1-9][0-9]*))$/
+
         if (!options) return regex.test(obj)
 
         let minCheckPassed = !options.hasOwnProperty('min') || obj >= options.min
