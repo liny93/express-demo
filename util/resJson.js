@@ -1,4 +1,9 @@
 /**
+<<<<<<< HEAD
+=======
+ * @author liny
+ * @version 0.2
+>>>>>>> db47d0668201c259b56986eff1eb5602001f1f54
  * @param {Response} res response响应对象
  * @param {Integer} status 状态码
  * @param {Object}  data 数据
