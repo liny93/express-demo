@@ -1,6 +1,6 @@
 /**
  * @author liny
- * @version 0.1
+ * @version 0.2
  * @param {Response} res response响应对象
  * @param {Integer} status 状态码
  * @param {Object}  data 数据
