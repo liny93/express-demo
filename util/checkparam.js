@@ -39,6 +39,7 @@ function checkModel(obj, model) {
     const newParam = {}
     for (let val of model) {
         if (obj[val.frontName] == null) {
+            if (val.default) newParam[val.backName] = val.default
             if (val.noEmpty) return `the ${val.frontName} cannot be null`
             continue
         }

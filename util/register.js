@@ -10,7 +10,7 @@ let register = (router, method, args, userMiddleware, ...middleware) => {
         } catch (e) {
             addLog(req, e)
             console.log(e)
-            return resJson(res, 400, 'SERVER ERROR')
+            return resJson(res, 500, 'SERVER ERROR')
         }
     }
     router[method](args, ...middleware, wrap)
@@ -21,14 +21,14 @@ function addLog(req, error) {
     const url = req.originalUrl || req.url
     const errMsg = error.message
     const errStack = error.stack
+    const errMsgArr = errMsg.split(':')
     let errFileMsg = `
     TIME: ${new Date().toLocaleString()}
     URL: ${url}
     LEVEL: ${errLevel[error.name]}
-    TIP: ${errList[errMsg.split(':').length > 1 ? errMsg.split(':')[0] : errStack.split(':')[0]]}
-    MSG: ${(errMsg.split(':').length > 1 ? errMsg.split(':')[1] : errMsg).trim()}
+    TIP: ${errList[errMsgArr.length > 1 ? errMsgArr[0] : errStack.split(':')[0]]}
+    MSG: ${(errMsgArr.length > 1 ? errMsgArr[1] : errMsg).trim()}
     AT: ${errStack.split('\n')[1].trim()}
-
     `
     if (req.method !== 'GET') errFileMsg += `BODY: ${JSON.stringify(req.body)} `
     fs.appendFileSync(path.resolve(__dirname, '../logs/error.log'), errFileMsg + '\n\n', 'utf8')
@@ -41,7 +41,8 @@ const errLevel = {
     "SequelizeValidationError": "sequelize",
     "ValidationError": "sequelize",
     "SequelizeForeignKeyConstraintError": "sequelize",
-    "SequelizeDatabaseError": "sequelize"
+    "SequelizeDatabaseError": "sequelize",
+    "SequelizeConnectionError": "sequelize"
 }
 
 const errList = {
@@ -51,7 +52,8 @@ const errList = {
     "TypeError": "变量使用不正确",
     "ReferenceError": "变量未定义",
     "SequelizeDatabaseError": "数据库字段类型错误",
-    "Incorrect integer value": "数据库字段类型错误"
+    "Incorrect integer value": "数据库字段类型错误",
+    "connect ETIMEDOUT": "数据库连接超时"
 }
 
 module.exports = register

@@ -9,8 +9,9 @@
  * {
  *      frontName: "string" 前端发过来的参数名称                 必须有
  *      backName: "string"  将前端发过来的参数转换成指定名称      必须有
- *      noEmpty: boolean 非空判断                               必须有
+ *      noEmpty: boolean 非空判断                               默认可以为空
  *      fun: "string" 校检函数                                  必须有，且在预设的函数范围内
+ *      default: "string" 默认值，如果参数为空，使用该默认值
  *      options?: object 校检函数参数
  * }
  */
@@ -53,8 +54,8 @@ const registerParam = [
 
 const updatePasswordParam = [
     {
-        frontName: "oldPwd",
-        backName: "oldPwd",
+        frontName: "oldPwddddddd",
+        backName: "old",
         noEmpty: true,
         fun: "isString",
         options: { length: { min: 3, max: 10 } }

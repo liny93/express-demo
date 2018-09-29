@@ -216,3 +216,93 @@
 
     BODY: {"password":"123456"} 
 
+
+    TIME: 2018-9-17 14:28:03
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not an object
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:28:59
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not an object
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:29:39
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not callable
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:30:54
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not an object
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:33:17
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not callable
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:34:25
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量使用不正确
+    MSG: Right-hand side of 'instanceof' is not callable
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:13:19)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:36:39
+    URL: /user/login
+    LEVEL: system
+    TIP: 变量未定义
+    MSG: constr is not defined
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:17:3)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:41:11
+    URL: /user/login
+    LEVEL: system
+    TIP: undefined
+    MSG: invalid response
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:14:11)
+
+    BODY: {"username":"123","password":"123"} 
+
+
+    TIME: 2018-9-17 14:41:37
+    URL: /user/login
+    LEVEL: system
+    TIP: undefined
+    MSG: invalid response
+    AT: at resJson (c:\Users\林勇\Desktop\farmwork\express-demo\util\resJson.js:14:11)
+
+    BODY: {"username":"123","password":"123"} 
+

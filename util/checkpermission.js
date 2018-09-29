@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const resJson = require('./resJson')
 const jwt = require('jsonwebtoken')
 

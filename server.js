@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+
 var app = require('./app')
 var http = require('http')
 var fs = require('fs')

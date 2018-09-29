@@ -1,6 +1,4 @@
 /**
- * @author liny
- * @version 0.1
  * @param {Response} res response响应对象
  * @param {Integer} status 状态码
  * @param {Object}  data 数据
@@ -8,6 +6,9 @@
  * @return {Object} obj 返回json数据
  */
 function resJson(res, status, data, message) {
+  if (!res || res.constructor.name !== 'ServerResponse') {
+    throw Error("invalid response")
+  }
   const jsonObj = {};
   const arr = Array.prototype.slice.apply(arguments);
   const len = arr.length;
@@ -31,10 +32,12 @@ function resJson(res, status, data, message) {
   };
   if (len == 1) {
     status = 500;
-  } else if (len == 2) {
+  }
+  if (len == 2) {
     status = 200;
     data = arr[1];
-  } else if (len == 3) {
+  }
+  if (len == 3) {
     if (status == 200) {
       data = arr[2];
     } else {
@@ -45,11 +48,7 @@ function resJson(res, status, data, message) {
   jsonObj.code = +status;
   jsonObj.data = data || {};
   jsonObj.msg = message || httpStatus[status] || '';
-  if (res && res.json) {
-    res.json(jsonObj);
-  } else {
-    return jsonObj;
-  }
+  return res.json(jsonObj);
 }
 
 module.exports = resJson;
