@@ -1,6 +1,8 @@
-const { db, models } = require('../models')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
+const { db, models } = require('../models')
+const ParamError = require('../util/paramerror')
 
 class UserService {
     static getInstance() {
@@ -14,29 +16,31 @@ class UserService {
     async checkLogin(username, password) {
         const user = await models.user.findOne({ where: { username: username } }) // 查询用户
 
-        if (!user || !bcrypt.compareSync(password, user.password)) return [400, 'invalid user']  // 无效用户
+        if (!user || !bcrypt.compareSync(password, user.password))
+            throw new ParamError(401, 'invalid user') // 无效用户
 
         await models.user.update({ last_login: new Date() }, { where: { username: username }, fields: ['last_login'] }) // 修改登录时间
 
         const token = jwt.sign({ id: user.id, role: user.role }, process.env.TOKEN_SECREKEY, { expiresIn: 60 * 10 }) // 生成jwt
-        return [{ token }]
+        return { token }
     }
 
     // 修改密码
     async updatePassword(id, oldPwd, newPwd) {
         const user = await models.user.findById(id)
-        if (!bcrypt.compareSync(oldPwd, user.password)) return [400, 'invalid old password']
+        if (!bcrypt.compareSync(oldPwd, user.password))
+            throw new ParamError(401, 'invalid old password')
 
         await models.user.update({ password: bcrypt.hashSync(newPwd, bcrypt.genSaltSync(8)) }, { where: { id }, fields: ['password'] })
-        return ['success']
+        return 'success'
     }
 
     // 注册
     async register(username, password) {
         const user = await models.user.findOne({ where: { username: username } }) // 查询用户
 
-        if (user) return [400, "this user already exists"]
-
+        if (user)
+            throw new ParamError(401, 'this user already exists')
         const newUser = {
             username: username,
             password: bcrypt.hashSync(password, bcrypt.genSaltSync(8)),
@@ -47,17 +51,18 @@ class UserService {
 
         await models.user.create(newUser)
 
-        return ['success']
+        return 'success'
     }
 
     // 修改用户信息
     async updateUserInfo(user) {
         const userinfo = await models.user.findById(user.id)
-        if (!userinfo) return [400, "this user is not exists"]  // 检查
-
+        if (!userinfo)   // 检查
+            throw new ParamError(401, 'this user is not exists')
         if (user.username) {
             const checkUser = await models.user.findOne({ where: { username: user.username } })
-            if (checkUser && checkUser.id !== user.id) return [400, "this user name already exists"]
+            if (checkUser && checkUser.id !== user.id)
+                throw new ParamError(401, 'this user name already exists')
         }
 
         const updateUser = { id: user.id }
@@ -67,7 +72,7 @@ class UserService {
         if (user.role) updateUser.role = user.role
 
         await models.user.update(updateUser, { where: { id: user.id }, fields: Object.keys(updateUser) })
-        return ['success']
+        return 'success'
     }
 
     // 获取用户信息

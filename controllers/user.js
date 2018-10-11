@@ -5,14 +5,14 @@ const { resJson } = require('../util')
 exports.login = async (req, res) => {
     const { username, password } = req.body
     const result = await UserService.checkLogin(username, password)
-    return resJson(res, ...result)
+    return resJson(res, result)
 }
 
 // 注册
 exports.register = async (req, res) => {
     const { username, password } = req.body
     const result = await UserService.register(username, password)
-    return resJson(res, ...result)
+    return resJson(res, result)
 }
 
 // 获取用户信息
@@ -33,12 +33,12 @@ exports.updatePassword = async (req, res) => {
     const { oldPwd, newPwd } = req.body
     const id = req.userid
     const result = await UserService.updatePassword(id, oldPwd, newPwd)
-    return resJson(res, ...result)
+    return resJson(res, result)
 }
 
 // 修改其他用户信息
 exports.updateUserInfo = async (req, res) => {
     const user = req.body
     const result = await UserService.updateUserInfo(user)
-    return resJson(res, ...result)
+    return resJson(res, result)
 }

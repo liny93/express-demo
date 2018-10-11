@@ -1,6 +1,8 @@
-const resJson = require('./resJson')
 const fs = require('fs')
 const path = require('path')
+
+const ParamError = require('./paramerror')
+const resJson = require('./resJson')
 
 //  路由注册，统一进行try  catch
 let register = (router, method, args, userMiddleware, ...middleware) => {
@@ -8,6 +10,7 @@ let register = (router, method, args, userMiddleware, ...middleware) => {
         try {
             await userMiddleware(req, res, next)
         } catch (e) {
+            if (e instanceof ParamError) return resJson(res, e.code, e.msg)
             addLog(req, e)
             console.log(e)
             return resJson(res, 500, 'SERVER ERROR')
