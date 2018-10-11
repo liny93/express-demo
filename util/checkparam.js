@@ -38,6 +38,10 @@ module.exports = (modelGroup, modelName) => {
 function checkModel(obj, model) {
     const newParam = {}
     for (let val of model) {
+        if (typeof val === 'string') {
+            newParam[val] = obj[val]
+            continue
+        }
         if (obj[val.frontName] == null) {
             if (val.default) newParam[val.backName] = val.default
             if (val.noEmpty) return `the ${val.frontName} cannot be null`
@@ -67,6 +71,7 @@ function checkArray(model) {
         model = [...model.params || [], ...model.query || [], ...model.body || []]
     }
     for (let val of model) {
+        if (typeof val === 'string') continue
         const frontNameCheck = val.hasOwnProperty('frontName') && CheckFun.isString(val.frontName)
         const backNameCheck = val.hasOwnProperty('backName') && CheckFun.isString(val.backName)
         const noEmptyCheck = val.hasOwnProperty('noEmpty') && CheckFun.isBoolean(val.noEmpty)
@@ -83,6 +88,9 @@ const CheckFun = {
     ownFun(obj, fun) {
         if (!checkType(fun, 'Function')) return false
         return fun(obj)
+    },
+    isEqual(obj, options) {
+        return obj === options
     },
     isObject(obj) {
         return checkType(obj, 'Object')
