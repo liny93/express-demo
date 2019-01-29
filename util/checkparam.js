@@ -159,13 +159,11 @@ const CheckFun = {
         return regex.test(obj) && minCheckPassed && maxCheckPassed && ltCheckPassed && gtCheckPassed
     },
     isIn(obj, options) {
-        if (Array.isArray(options)) {
+        if (Array.isArray(options))
             return options.includes(obj)
-        } else if (typeof options === 'object') {
+        if (typeof options === 'object')
             return options.hasOwnProperty(obj)
-        } else {
-            return false
-        }
+        return false
     },
     isIP(str) {
         const ipv4Maybe = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/
